@@ -1,3 +1,5 @@
+// make a pin 4 digit by using function
+
 function makeFourDigitPin() {
     const randomPin = randoemGeneratePin();
     const randomPinString = randomPin + '';
@@ -10,16 +12,46 @@ function makeFourDigitPin() {
     }
 }
 
-
+// generate random pin by using funtion 
 
 function randoemGeneratePin() {
     const random = Math.round(Math.random() * 10000);
     return random;
 }
 
+// set pin to display section 
+
+
 document.getElementById('generate-pin').addEventListener('click', function () {
     const pin = makeFourDigitPin();
     // console.log(pin);
     const pinDisplayElement = document.getElementById('pin-display');
     pinDisplayElement.value = pin;
+})
+
+
+// button operation in user end 
+
+
+document.getElementById('buttons').addEventListener('click', function (event) {
+    const singleButton = event.target.innerText;
+    const typedDisplayElement = document.getElementById('typed-display');
+    const previousTypedNumber = typedDisplayElement.value;
+    if (isNaN(singleButton)) {
+        if (singleButton === 'C') {
+            typedDisplayElement.value = '';
+        }
+
+        else if (singleButton === '<') {
+            const digit = previousTypedNumber.split('');
+            digit.pop();
+            const remainDigit = digit.join('');
+            typedDisplayElement.value = remainDigit;
+        }
+    }
+
+    else {
+        const newTypedNumber = previousTypedNumber + singleButton;
+        typedDisplayElement.value = newTypedNumber;
+    }
 })
