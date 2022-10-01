@@ -27,6 +27,8 @@ document.getElementById('generate-pin').addEventListener('click', function () {
     // console.log(pin);
     const pinDisplayElement = document.getElementById('pin-display');
     pinDisplayElement.value = pin;
+
+    return pin;
 })
 
 
@@ -54,4 +56,29 @@ document.getElementById('buttons').addEventListener('click', function (event) {
         const newTypedNumber = previousTypedNumber + singleButton;
         typedDisplayElement.value = newTypedNumber;
     }
+})
+
+
+// mathcing pin 
+
+document.getElementById('submit').addEventListener('click', function () {
+    const generatedPinElement = document.getElementById('pin-display');
+    const generatedPinString = generatedPinElement.value;
+    const generatedPin = parseInt(generatedPinString);
+
+    const inputPinElement = document.getElementById('typed-display');
+    const inputPinString = inputPinElement.value;
+    const inputPin = parseInt(inputPinString);
+
+    if (generatedPin === inputPin) {
+        const matchedTextElement = document.getElementById('pin-matched');
+        alert(matchedTextElement.innerText);
+    }
+
+    else {
+        const notMatchedTextElement = document.getElementById('pin-not-matched');
+        alert(notMatchedTextElement.innerText);
+    }
+
+
 })
