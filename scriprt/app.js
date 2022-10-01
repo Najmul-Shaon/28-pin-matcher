@@ -70,14 +70,25 @@ document.getElementById('submit').addEventListener('click', function () {
     const inputPinString = inputPinElement.value;
     const inputPin = parseInt(inputPinString);
 
+    const matchedTextElement = document.getElementById('pin-matched');
+    const notMatchedTextElement = document.getElementById('pin-not-matched');
+
     if (generatedPin === inputPin) {
-        const matchedTextElement = document.getElementById('pin-matched');
+        notMatchedTextElement.style.display = 'none';
+        matchedTextElement.style.display = 'block';
+        generatedPinElement.value = '';
+        inputPinElement.value = '';
         alert(matchedTextElement.innerText);
     }
 
     else {
-        const notMatchedTextElement = document.getElementById('pin-not-matched');
+
+        notMatchedTextElement.style.display = 'block';
+        matchedTextElement.style.display = 'none';
+        generatedPinElement.value = '';
+        inputPinElement.value = '';
         alert(notMatchedTextElement.innerText);
+
     }
 
 
